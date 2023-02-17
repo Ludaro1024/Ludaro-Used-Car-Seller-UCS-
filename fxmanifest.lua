@@ -15,5 +15,6 @@ server_scripts({
 });
 
 client_scripts({
+    '@NativeUILua_Reloaded/src/NativeUIReloaded.lua',
     'client/*.lua'
 });

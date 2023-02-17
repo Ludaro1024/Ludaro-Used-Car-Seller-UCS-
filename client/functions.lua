@@ -10,6 +10,24 @@ if (GetResourceState("es_extended") == "started") then
     end
 end
 
+local job 
+AddEventHandler('onResourceStart', function(resourceName)
+    if (GetCurrentResourceName() == resourceName) then
+  if ESX.IsPlayerLoaded() then
+      job = lib.callback.await('ucs:getjob', false, source)
+  end
+    end
+  end)
+  
+  RegisterNetEvent("esx:setJob", function(jobb)
+      job = jobb.name
+  end)
+  
+  RegisterNetEvent("esx:playerLoaded", function(playerdata)
+      job = playerdata.job.name
+  end)
+ 
+
 function debug(msg)
     if Config.Debug then
         if type(msg) == "table" then
@@ -29,10 +47,10 @@ end
 
 lib.callback.register('ox:getNearbyVehicles', function(radius)
     local nearbyVehicles = lib.getNearbyVehicles(GetEntityCoords(cache.ped), radius, true)
-    if nearbyVehicles then 
+    if nearbyVehicles[1] then 
     return  GetVehicleNumberPlateText(nearbyVehicles[1].vehicle)
     else
-        notify(trans)
+        return nil
     end
 end)
 
@@ -40,3 +58,5 @@ end)
 RegisterNetEvent('lcdm:notify', function(msg)
     notify(msg)
 end)
+
+
