@@ -9,3 +9,5 @@ for now it only gives you the option to have an item (or command) to give someon
 Preview: --> https://streamable.com/tpoh0q
 
 You need ox-lib! --> https://github.com/overextended/ox_lib/releases
+
+And NativeUILuaReloaded --> https://github.com/sdiaz/NativeUILua_Reloaded
